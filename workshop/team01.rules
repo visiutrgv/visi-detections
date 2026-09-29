@@ -1,1 +1,2 @@
 # TEAM01 rules. SIDs 1001000 to 1001999. Every msg must start with "TEAM01"
+alert http any any -> $HOME_NET any (msg:"TEAM01 SQLi UNION SELECT"; flow:established,to_server; http.uri; content:"union"; nocase; content:"select"; nocase; distance:0; classtype:web-application-attack; sid:100X001; rev:1;)
